@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="rsp">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:any />
+			</xs:sequence>
+			<xs:attribute name="stat" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="photos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="photo" type="Photo" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="page" type="xs:int" />
+			<xs:attribute name="pages" type="xs:int" />
+			<xs:attribute name="perpage" type="xs:int" />
+			<xs:attribute name="total" type="xs:int" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="err">
+		<xs:complexType>
+			<xs:sequence />
+			<xs:attribute name="code" type="xs:int" use="required" />
+			<xs:attribute name="msg" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="Photo">
+		<xs:sequence />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="farm" type="xs:string" />
+		<xs:attribute name="owner" type="xs:string" />
+		<xs:attribute name="secret" type="xs:string" />
+		<xs:attribute name="server" type="xs:string" />
+		<xs:attribute name="title" type="xs:string" />
+		<xs:attribute name="ispublic" type="xs:string" />
+		<xs:attribute name="isfriend" type="xs:string" />
+		<xs:attribute name="isfamily" type="xs:string" />
+	</xs:complexType>
+
+	<!-- <xs:element name="frob" type="xs:string"> </xs:element> -->
+
+	<xs:element name="frob">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string" />
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="auth">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="token" type="xs:string" />
+				<xs:element name="perms" type="xs:string" />
+				<xs:element name="user">
+					<xs:complexType>
+						<xs:sequence />
+						<xs:attribute name="nsid" type="xs:string" />
+						<xs:attribute name="username" type="xs:string" />
+						<xs:attribute name="fullname" type="xs:string" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="photoid">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:int" />
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="username" type="xs:string" />
+			</xs:sequence>
+			<xs:attribute name="nsid" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="person">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="username" type="xs:string" />
+				<xs:element name="realname" type="xs:string" />
+				<xs:element name="mbox_sha1sum" type="xs:string" />
+				<xs:element name="location" type="xs:string" />
+				<xs:element name="photosurl" type="xs:string" />
+				<xs:element name="profileurl" type="xs:string" />
+				<xs:element name="photos">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="firstdate" type="xs:string" />
+							<xs:element name="firstdatetaken" type="xs:string" />
+							<xs:element name="count" type="xs:int" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="nsid" type="xs:string" />
+			<xs:attribute name="ispro" type="xs:int" />
+			<xs:attribute name="iconserver" type="xs:string" />
+			<xs:attribute name="iconfarm" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="groups">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="group" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence />
+						<xs:attribute name="nsid" type="xs:string" />
+						<xs:attribute name="name" type="xs:string" />
+						<xs:attribute name="admin" type="xs:int" />
+						<xs:attribute name="eighteenplus" type="xs:int" />
+						<xs:attribute name="invitation_only" type="xs:int" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
